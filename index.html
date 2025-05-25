@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hakan SEÇGİN | Veteriner Hekim & Yazılım Geliştirici</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#3b82f6", secondary: "#10b981" },
+            borderRadius: {
+              none: "0px",
+              sm: "8px",
+              DEFAULT: "12px",
+              md: "16px",
+              lg: "20px",
+              xl: "24px",
+              "2xl": "28px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "12px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      background-color: #0f172a;
+      color: #e2e8f0;
+      }
+      .gradient-bg {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      }
+      .hero-gradient {
+      background-image: linear-gradient(90deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.8) 50%, rgba(15, 23, 42, 0.4) 100%);
+      }
+      .card {
+      transition: all 0.3s ease;
+      }
+      .card:hover {
+      transform: translateY(-10px);
+      }
+      .skill-bar {
+      position: relative;
+      height: 8px;
+      border-radius: 4px;
+      background: #1e293b;
+      overflow: hidden;
+      }
+      .skill-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: #3b82f6;
+      border-radius: 4px;
+      transition: width 1s ease-in-out;
+      }
+      .header {
+      transition: background-color 0.3s ease;
+      }
+      .profile-image {
+      transition: transform 0.5s ease;
+      }
+      .profile-image:hover {
+      transform: rotate(5deg);
+      }
+      .social-icon {
+      transition: transform 0.3s ease, color 0.3s ease;
+      }
+      .social-icon:hover {
+      transform: translateY(-5px);
+      color: #3b82f6;
+      }
+      input, textarea {
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      color: #e2e8f0;
+      transition: border-color 0.3s ease;
+      }
+      input:focus, textarea:focus {
+      border-color: #3b82f6;
+      outline: none;
+      }
+      .theme-switch {
+      position: relative;
+      width: 60px;
+      height: 30px;
+      border-radius: 15px;
+      background-color: #1e293b;
+      cursor: pointer;
+      }
+      .theme-switch-toggle {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: #3b82f6;
+      transition: transform 0.3s ease;
+      }
+      .theme-switch.dark .theme-switch-toggle {
+      transform: translateX(30px);
+      }
+      .project-card {
+      overflow: hidden;
+      }
+      .project-overlay {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.5) 50%, rgba(15, 23, 42, 0) 100%);
+      }
+      .project-card:hover .project-overlay {
+      opacity: 1;
+      }
+      .filter-btn {
+      transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      .filter-btn.active {
+      background-color: #3b82f6;
+      color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header
+      id="header"
+      class="fixed w-full z-50 px-6 py-4 transition-all duration-300 bg-transparent"
+    >
+      <div class="container mx-auto flex justify-between items-center">
+        <a
+          href="/"
+          class="font-['Pacifico'] text-2xl text-white hover:text-primary transition-colors duration-300"
+          >Hakan SEÇGİN</a
+        >
+        <div class="hidden md:flex items-center space-x-8">
+          <a
+            href="#home"
+            class="text-white hover:text-primary transition-colors duration-300"
+            >Ana Sayfa</a
+          >
+          <a
+            href="#about"
+            class="text-white hover:text-primary transition-colors duration-300"
+            >Hakkımda</a
+          >
+          <a
+            href="#projects"
+            class="text-white hover:text-primary transition-colors duration-300"
+            >Projeler</a
+          >
+          <a
+            href="#games"
+            class="text-white hover:text-primary transition-colors duration-300"
+            >Oyunlar</a
+          >
+
+          <div class="theme-switch dark ml-4" id="themeSwitch">
+            <div class="theme-switch-toggle"></div>
+          </div>
+        </div>
+        <div
+          class="md:hidden w-10 h-10 flex items-center justify-center"
+          id="mobileMenuBtn"
+        >
+          <i class="ri-menu-line text-white ri-2x"></i>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden absolute top-full left-0 w-full bg-gray-900 py-4 px-6"
+      >
+        <div class="flex flex-col space-y-4">
+          <a
+            href="#home"
+            class="text-white hover:text-primary transition-colors duration-300"
+            >Ana Sayfa</a
+          >
+          <a
+            href="#about"
+            class="text-white hover:text-primary transition-colors duration-300"
+            >Hakkımda</a
+          >
+          <a
+            href="#projects"
+            class="text-white hover:text-primary transition-colors duration-300"
+            >Projeler</a
+          >
+          <a
+            href="#games"
+            class="text-white hover:text-primary transition-colors duration-300"
+            >Oyunlar</a
+          >
+
+          <div class="flex items-center space-x-2">
+            <span class="text-white">Tema</span>
+            <div class="theme-switch dark" id="themeSwitchMobile">
+              <div class="theme-switch-toggle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="relative min-h-screen flex items-center overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 z-0"
+        style="background-image: url('https://readdy.ai/api/search-image?query=modern%20tech%20workspace%20with%20veterinary%20elements%2C%20clean%20desk%20with%20computer%2C%20medical%20equipment%2C%20soft%20lighting%2C%20professional%20atmosphere%2C%20high%20quality%2C%20ultra%20detailed%2C%208k%20resolution%2C%20realistic&width=1920&height=1080&seq=hero1&orientation=landscape'); background-size: cover; background-position: center;"
+      ></div>
+      <div class="absolute inset-0 hero-gradient z-0"></div>
+      <div class="container mx-auto px-6 z-10">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="w-full md:w-1/2 mb-10 md:mb-0">
+            <h1
+              class="text-4xl md:text-6xl font-bold mb-4 text-white"
+              data-aos="fade-up"
+            >
+              Hakan SEÇGİN
+            </h1>
+            <h2
+              class="text-xl md:text-2xl text-gray-300 mb-8"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              Veteriner Hekim & Yazılım Geliştirici
+            </h2>
+            <p
+              class="text-gray-300 mb-8 max-w-lg"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              Veteriner hekimlik mesleği ile yazılım tutkusunu birleştiren,
+              yapay zeka ve bilişim alanında projeler geliştiren bir teknoloji
+              meraklısı.
+            </p>
+            <div class="flex space-x-4" data-aos="fade-up" data-aos-delay="300">
+              <a
+                href="#projects"
+                class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-blue-600 transition-colors duration-300 whitespace-nowrap"
+                >Projelerimi Keşfet</a
+              >
+              <a
+                href="#contact"
+                class="border border-white text-white px-6 py-3 !rounded-button font-medium hover:bg-white hover:text-gray-900 transition-all duration-300 whitespace-nowrap"
+                >İletişime Geç</a
+              >
+            </div>
+          </div>
+          <div class="w-full md:w-1/2 flex justify-center" data-aos="fade-left">
+            <div
+              class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white profile-image"
+            >
+              <img
+                src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20a%20male%20veterinarian%20with%20glasses%2C%20friendly%20smile%2C%20modern%20professional%20look%2C%20clean%20background%2C%20high%20quality%2C%20ultra%20detailed%2C%208k%20resolution%2C%20realistic&width=600&height=600&seq=profile1&orientation=squarish"
+                alt="Hakan SEÇGİN"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce"
+      >
+        <a
+          href="#about"
+          class="w-10 h-10 flex items-center justify-center text-white"
+        >
+          <i class="ri-arrow-down-line ri-2x"></i>
+        </a>
+      </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="py-20 gradient-bg">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-16 text-white"
+          data-aos="fade-up"
+        >
+          Hakkımda
+        </h2>
+        <div class="flex flex-col md:flex-row gap-10">
+          <div class="w-full md:w-1/2" data-aos="fade-right">
+            <h3 class="text-2xl font-semibold mb-6 text-white">
+              Kişisel & Profesyonel
+            </h3>
+            <p class="text-gray-300 mb-6">
+              Merhaba! Ben Hakan SEÇGİN. Veteriner hekim olarak çalışırken aynı
+              zamanda yazılım ve teknoloji alanında kendimi geliştirmeye devam
+              ediyorum. Hayvan sağlığı ve refahı için çalışırken, teknolojinin
+              sunduğu imkanları mesleğimle birleştirmeyi hedefliyorum.
+            </p>
+            <p class="text-gray-300 mb-6">
+              Bilişim ve yapay zeka alanlarında sürekli kendimi geliştiriyor,
+              Python ve JavaScript gibi programlama dillerini kullanarak çeşitli
+              projeler ve oyunlar geliştiriyorum. Amacım, veteriner hekimlik
+              alanında teknolojik çözümler sunarak hem meslektaşlarıma hem de
+              hayvan sahiplerine fayda sağlamak.
+            </p>
+            <div class="grid grid-cols-2 gap-6 mt-8">
+              <div>
+                <h4 class="text-lg font-medium mb-3 text-white">Eğitim</h4>
+                <ul class="space-y-2 text-gray-300">
+                  <li>Samsun Veteriner Sağlık Meslek Lisesi, 2004</li>
+                  <li>Anadolu Üniversitesi Laborant Veteriner Sağlık, 2008</li>
+                  <li>Kafkas Üniversitesi Veteriner Fakültesi, 2016</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-medium mb-3 text-white">
+                  İlgi Alanları
+                </h4>
+                <ul class="space-y-2 text-gray-300">
+                  <li>Veteriner Hekimlik</li>
+                  <li>Yazılım Geliştirme</li>
+                  <li>Yapay Zeka</li>
+                  <li>Oyun Geliştirme</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="w-full md:w-1/2" data-aos="fade-left">
+            <h3 class="text-2xl font-semibold mb-6 text-white">Yetenekler</h3>
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="text-white">Python</span>
+                  <span class="text-gray-300">90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 90%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="text-white">JavaScript</span>
+                  <span class="text-gray-300">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 85%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="text-white">HTML/CSS</span>
+                  <span class="text-gray-300">80%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 80%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="text-white">Yapay Zeka</span>
+                  <span class="text-gray-300">75%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 75%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="text-white">Veteriner Hekimlik</span>
+                  <span class="text-gray-300">95%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 95%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-10">
+              <h3 class="text-xl font-semibold mb-4 text-white">
+                Teknolojiler
+              </h3>
+              <div class="flex flex-wrap gap-4">
+                <div
+                  class="bg-gray-800 p-3 rounded-lg flex items-center space-x-2"
+                >
+                  <div
+                    class="w-6 h-6 flex items-center justify-center text-blue-500"
+                  >
+                    <i class="ri-python-fill"></i>
+                  </div>
+                  <span class="text-gray-300">Python</span>
+                </div>
+                <div
+                  class="bg-gray-800 p-3 rounded-lg flex items-center space-x-2"
+                >
+                  <div
+                    class="w-6 h-6 flex items-center justify-center text-yellow-400"
+                  >
+                    <i class="ri-javascript-fill"></i>
+                  </div>
+                  <span class="text-gray-300">JavaScript</span>
+                </div>
+                <div
+                  class="bg-gray-800 p-3 rounded-lg flex items-center space-x-2"
+                >
+                  <div
+                    class="w-6 h-6 flex items-center justify-center text-blue-600"
+                  >
+                    <i class="ri-reactjs-fill"></i>
+                  </div>
+                  <span class="text-gray-300">React</span>
+                </div>
+                <div
+                  class="bg-gray-800 p-3 rounded-lg flex items-center space-x-2"
+                >
+                  <div
+                    class="w-6 h-6 flex items-center justify-center text-green-500"
+                  >
+                    <i class="ri-nodejs-fill"></i>
+                  </div>
+                  <span class="text-gray-300">Node.js</span>
+                </div>
+                <div
+                  class="bg-gray-800 p-3 rounded-lg flex items-center space-x-2"
+                >
+                  <div
+                    class="w-6 h-6 flex items-center justify-center text-blue-400"
+                  >
+                    <i class="ri-database-2-fill"></i>
+                  </div>
+                  <span class="text-gray-300">SQL</span>
+                </div>
+                <div
+                  class="bg-gray-800 p-3 rounded-lg flex items-center space-x-2"
+                >
+                  <div
+                    class="w-6 h-6 flex items-center justify-center text-purple-500"
+                  >
+                    <i class="ri-brain-fill"></i>
+                  </div>
+                  <span class="text-gray-300">Yapay Zeka</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-6 text-white"
+          data-aos="fade-up"
+        >
+          Projelerim
+        </h2>
+        <p
+          class="text-gray-300 text-center max-w-2xl mx-auto mb-12"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          Veteriner hekimlik ve yazılım alanlarında geliştirdiğim projeler.
+          Teknoloji ve hayvan sağlığını bir araya getiren çözümler.
+        </p>
+        <div
+          class="flex justify-center mb-10"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <div class="inline-flex bg-gray-800 p-1 rounded-full">
+            <button
+              class="filter-btn active px-6 py-2 rounded-full whitespace-nowrap"
+              data-filter="all"
+            >
+              Tümü
+            </button>
+            <button
+              class="filter-btn px-6 py-2 rounded-full whitespace-nowrap"
+              data-filter="software"
+            >
+              Yazılım
+            </button>
+            <button
+              class="filter-btn px-6 py-2 rounded-full whitespace-nowrap"
+              data-filter="ai"
+            >
+              Yapay Zeka
+            </button>
+            <button
+              class="filter-btn px-6 py-2 rounded-full whitespace-nowrap"
+              data-filter="veterinary"
+            >
+              Veterinerlik
+            </button>
+          </div>
+        </div>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          id="projectsGrid"
+        >
+          <!-- Project 1 -->
+          <div
+            class="project-card rounded-lg overflow-hidden shadow-lg bg-gray-800 transition-all duration-300 hover:shadow-xl"
+            data-category="veterinary ai"
+            data-aos="fade-up"
+          >
+            <div class="relative h-56">
+              <img
+                src="https://readdy.ai/api/search-image?query=veterinary%20diagnostic%20software%20interface%2C%20modern%20UI%20design%2C%20medical%20data%20visualization%2C%20professional%20medical%20application%2C%20high%20quality%2C%20ultra%20detailed%2C%208k%20resolution%2C%20realistic&width=600&height=400&seq=project1&orientation=landscape"
+                alt="VetAI Tanı Asistanı"
+                class="w-full h-full object-cover object-top"
+              />
+              <div
+                class="project-overlay absolute inset-0 flex flex-col justify-end p-6"
+              >
+                <h3 class="text-xl font-semibold text-white">
+                  VetAI Tanı Asistanı
+                </h3>
+                <p class="text-gray-300 mt-2">
+                  Veteriner hekimler için yapay zeka destekli tanı sistemi
+                </p>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-blue-500 bg-opacity-20 text-blue-400 px-3 py-1 rounded-full text-xs"
+                  >Python</span
+                >
+                <span
+                  class="bg-purple-500 bg-opacity-20 text-purple-400 px-3 py-1 rounded-full text-xs"
+                  >Yapay Zeka</span
+                >
+                <span
+                  class="bg-green-500 bg-opacity-20 text-green-400 px-3 py-1 rounded-full text-xs"
+                  >Veterinerlik</span
+                >
+              </div>
+              <p class="text-gray-300 mb-6">
+                Hayvan hastalıklarını semptomlardan tespit eden, görüntü işleme
+                teknolojisi ile desteklenen tanı yardımcısı.
+              </p>
+              <div class="flex space-x-3">
+                <a
+                  href="#"
+                  class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors duration-300 whitespace-nowrap"
+                  >İndir</a
+                >
+                <a
+                  href="#"
+                  class="border border-gray-500 text-gray-300 px-4 py-2 !rounded-button font-medium hover:bg-gray-700 transition-colors duration-300 whitespace-nowrap"
+                  >Demo</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div
+            class="project-card rounded-lg overflow-hidden shadow-lg bg-gray-800 transition-all duration-300 hover:shadow-xl"
+            data-category="software"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="relative h-56">
+              <img
+                src="https://readdy.ai/api/search-image?query=veterinary%20clinic%20management%20software%20interface%2C%20appointment%20scheduling%2C%20patient%20records%2C%20modern%20UI%20design%2C%20professional%20application%2C%20high%20quality%2C%20ultra%20detailed%2C%208k%20resolution%2C%20realistic&width=600&height=400&seq=project2&orientation=landscape"
+                alt="VetClinic Yönetim Sistemi"
+                class="w-full h-full object-cover object-top"
+              />
+              <div
+                class="project-overlay absolute inset-0 flex flex-col justify-end p-6"
+              >
+                <h3 class="text-xl font-semibold text-white">
+                  VetClinic Yönetim Sistemi
+                </h3>
+                <p class="text-gray-300 mt-2">
+                  Veteriner klinikleri için tam kapsamlı yönetim yazılımı
+                </p>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-yellow-500 bg-opacity-20 text-yellow-400 px-3 py-1 rounded-full text-xs"
+                  >JavaScript</span
+                >
+                <span
+                  class="bg-blue-500 bg-opacity-20 text-blue-400 px-3 py-1 rounded-full text-xs"
+                  >React</span
+                >
+                <span
+                  class="bg-green-500 bg-opacity-20 text-green-400 px-3 py-1 rounded-full text-xs"
+                  >Node.js</span
+                >
+              </div>
+              <p class="text-gray-300 mb-6">
+                Randevu yönetimi, hasta kayıtları, faturalama ve envanter takibi
+                yapabilen kapsamlı klinik yönetim sistemi.
+              </p>
+              <div class="flex space-x-3">
+                <a
+                  href="#"
+                  class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors duration-300 whitespace-nowrap"
+                  >İndir</a
+                >
+                <a
+                  href="#"
+                  class="border border-gray-500 text-gray-300 px-4 py-2 !rounded-button font-medium hover:bg-gray-700 transition-colors duration-300 whitespace-nowrap"
+                  >Demo</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Project 3 -->
+          <div
+            class="project-card rounded-lg overflow-hidden shadow-lg bg-gray-800 transition-all duration-300 hover:shadow-xl"
+            data-category="ai software"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="relative h-56">
+              <img
+                src="https://readdy.ai/api/search-image?query=pet%20nutrition%20calculator%20app%20interface%2C%20diet%20planning%20for%20animals%2C%20food%20recommendation%20system%2C%20modern%20UI%20design%2C%20professional%20application%2C%20high%20quality%2C%20ultra%20detailed%2C%208k%20resolution%2C%20realistic&width=600&height=400&seq=project3&orientation=landscape"
+                alt="PetNutri Hesaplayıcı"
+                class="w-full h-full object-cover object-top"
+              />
+              <div
+                class="project-overlay absolute inset-0 flex flex-col justify-end p-6"
+              >
+                <h3 class="text-xl font-semibold text-white">
+                  PetNutri Hesaplayıcı
+                </h3>
+                <p class="text-gray-300 mt-2">
+                  Evcil hayvanlar için beslenme ve diyet planlayıcı
+                </p>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-blue-500 bg-opacity-20 text-blue-400 px-3 py-1 rounded-full text-xs"
+                  >Python</span
+                >
+                <span
+                  class="bg-purple-500 bg-opacity-20 text-purple-400 px-3 py-1 rounded-full text-xs"
+                  >Yapay Zeka</span
+                >
+                <span
+                  class="bg-pink-500 bg-opacity-20 text-pink-400 px-3 py-1 rounded-full text-xs"
+                  >Flutter</span
+                >
+              </div>
+              <p class="text-gray-300 mb-6">
+                Hayvanların yaş, cins, kilo ve sağlık durumuna göre optimal
+                beslenme planı oluşturan uygulama.
+              </p>
+              <div class="flex space-x-3">
+                <a
+                  href="#"
+                  class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors duration-300 whitespace-nowrap"
+                  >İndir</a
+                >
+                <a
+                  href="#"
+                  class="border border-gray-500 text-gray-300 px-4 py-2 !rounded-button font-medium hover:bg-gray-700 transition-colors duration-300 whitespace-nowrap"
+                  >Demo</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Project 4 -->
+          <div
+            class="project-card rounded-lg overflow-hidden shadow-lg bg-gray-800 transition-all duration-300 hover:shadow-xl"
+            data-category="veterinary software"
+            data-aos="fade-up"
+          >
+            <div class="relative h-56">
+              <img
+                src="https://readdy.ai/api/search-image?query=pet%20vaccination%20reminder%20app%20interface%2C%20calendar%20view%2C%20notification%20system%2C%20modern%20UI%20design%2C%20professional%20application%2C%20high%20quality%2C%20ultra%20detailed%2C%208k%20resolution%2C%20realistic&width=600&height=400&seq=project4&orientation=landscape"
+                alt="VaxReminder"
+                class="w-full h-full object-cover object-top"
+              />
+              <div
+                class="project-overlay absolute inset-0 flex flex-col justify-end p-6"
+              >
+                <h3 class="text-xl font-semibold text-white">VaxReminder</h3>
+                <p class="text-gray-300 mt-2">
+                  Aşı takip ve hatırlatma uygulaması
+                </p>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-yellow-500 bg-opacity-20 text-yellow-400 px-3 py-1 rounded-full text-xs"
+                  >JavaScript</span
+                >
+                <span
+                  class="bg-blue-500 bg-opacity-20 text-blue-400 px-3 py-1 rounded-full text-xs"
+                  >React Native</span
+                >
+                <span
+                  class="bg-red-500 bg-opacity-20 text-red-400 px-3 py-1 rounded-full text-xs"
+                  >Firebase</span
+                >
+              </div>
+              <p class="text-gray-300 mb-6">
+                Evcil hayvanların aşı takvimini takip eden ve hatırlatmalar
+                gönderen mobil uygulama.
+              </p>
+              <div class="flex space-x-3">
+                <a
+                  href="#"
+                  class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors duration-300 whitespace-nowrap"
+                  >İndir</a
+                >
+                <a
+                  href="#"
+                  class="border border-gray-500 text-gray-300 px-4 py-2 !rounded-button font-medium hover:bg-gray-700 transition-colors duration-300 whitespace-nowrap"
+                  >Demo</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Project 5 -->
+          <div
+            class="project-card rounded-lg overflow-hidden shadow-lg bg-gray-800 transition-all duration-300 hover:shadow-xl"
+            data-category="ai"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="relative h-56">
+              <img
+                src="https://readdy.ai/api/search-image?query=animal%20behavior%20analysis%20software%2C%20pet%20emotion%20recognition%2C%20AI-powered%20pet%20monitoring%2C%20modern%20UI%20design%2C%20professional%20application%2C%20high%20quality%2C%20ultra%20detailed%2C%208k%20resolution%2C%20realistic&width=600&height=400&seq=project5&orientation=landscape"
+                alt="PetMood Analiz"
+                class="w-full h-full object-cover object-top"
+              />
+              <div
+                class="project-overlay absolute inset-0 flex flex-col justify-end p-6"
+              >
+                <h3 class="text-xl font-semibold text-white">PetMood Analiz</h3>
+                <p class="text-gray-300 mt-2">
+                  Evcil hayvan davranış ve duygu analizi
+                </p>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-blue-500 bg-opacity-20 text-blue-400 px-3 py-1 rounded-full text-xs"
+                  >Python</span
+                >
+                <span
+                  class="bg-purple-500 bg-opacity-20 text-purple-400 px-3 py-1 rounded-full text-xs"
+                  >Yapay Zeka</span
+                >
+                <span
+                  class="bg-green-500 bg-opacity-20 text-green-400 px-3 py-1 rounded-full text-xs"
+                  >OpenCV</span
+                >
+              </div>
+              <p class="text-gray-300 mb-6">
+                Kamera görüntülerinden hayvanların duygusal durumunu ve
+                davranışlarını analiz eden yapay zeka sistemi.
+              </p>
+              <div class="flex space-x-3">
+                <a
+                  href="#"
+                  class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors duration-300 whitespace-nowrap"
+                  >İndir</a
+                >
+                <a
+                  href="#"
+                  class="border border-gray-500 text-gray-300 px-4 py-2 !rounded-button font-medium hover:bg-gray-700 transition-colors duration-300 whitespace-nowrap"
+                  >Demo</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Project 6 -->
+          <div
+            class="project-card rounded-lg overflow-hidden shadow-lg bg-gray-800 transition-all duration-300 hover:shadow-xl"
+            data-category="software veterinary"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="relative h-56">
+              <img
+                src="https://readdy.ai/api/search-image?query=veterinary%20telemedicine%20platform%20interface%2C%20video%20consultation%20with%20vet%2C%20pet%20health%20monitoring%2C%20modern%20UI%20design%2C%20professional%20application%2C%20high%20quality%2C%20ultra%20detailed%2C%208k%20resolution%2C%20realistic&width=600&height=400&seq=project6&orientation=landscape"
+                alt="VetConnect"
+                class="w-full h-full object-cover object-top"
+              />
+              <div
+                class="project-overlay absolute inset-0 flex flex-col justify-end p-6"
+              >
+                <h3 class="text-xl font-semibold text-white">VetConnect</h3>
+                <p class="text-gray-300 mt-2">
+                  Uzaktan veteriner konsültasyon platformu
+                </p>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-yellow-500 bg-opacity-20 text-yellow-400 px-3 py-1 rounded-full text-xs"
+                  >JavaScript</span
+                >
+                <span
+                  class="bg-blue-500 bg-opacity-20 text-blue-400 px-3 py-1 rounded-full text-xs"
+                  >Vue.js</span
+                >
+                <span
+                  class="bg-green-500 bg-opacity-20 text-green-400 px-3 py-1 rounded-full text-xs"
+                  >WebRTC</span
+                >
+              </div>
+              <p class="text-gray-300 mb-6">
+                Veteriner hekimler ve hayvan sahipleri arasında video
+                konsültasyon sağlayan web platformu.
+              </p>
+              <div class="flex space-x-3">
+                <a
+                  href="#"
+                  class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors duration-300 whitespace-nowrap"
+                  >İndir</a
+                >
+                <a
+                  href="#"
+                  class="border border-gray-500 text-gray-300 px-4 py-2 !rounded-button font-medium hover:bg-gray-700 transition-colors duration-300 whitespace-nowrap"
+                  >Demo</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Games Section -->
+    <section id="games" class="py-20 gradient-bg">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-6 text-white"
+          data-aos="fade-up"
+        >
+          Oyunlarım
+        </h2>
+        <p
+          class="text-gray-300 text-center max-w-2xl mx-auto mb-12"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          Boş zamanlarımda geliştirdiğim, oynaması keyifli ve eğitici oyunlar.
+          Hemen indirip oynayabilirsiniz!
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Game 1 -->
+          <div
+            class="card rounded-lg overflow-hidden shadow-lg bg-gray-800"
+            data-aos="fade-up"
+          >
+            <div class="relative h-56">
+              <img
+                src="https://readdy.ai/api/search-image?query=educational%20pet%20care%20game%20interface%2C%20colorful%20cartoon%20style%2C%20animal%20characters%2C%20fun%20game%20UI%2C%20high%20quality%2C%20ultra%20detailed%2C%208k%20resolution%2C%20realistic&width=600&height=400&seq=game1&orientation=landscape"
+                alt="PetCare Adventure"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2 text-white">
+                PetCare Adventure
+              </h3>
+              <p class="text-gray-300 mb-4">
+                Evcil hayvan bakımını öğreten eğitici bir oyun. Hayvanları
+                besle, tedavi et ve mutlu et!
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                  <div class="flex items-center mr-4">
+                    <div
+                      class="w-5 h-5 flex items-center justify-center text-yellow-400 mr-1"
+                    >
+                      <i class="ri-star-fill"></i>
+                    </div>
+                    <span class="text-gray-300">4.8</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div
+                      class="w-5 h-5 flex items-center justify-center text-gray-400 mr-1"
+                    >
+                      <i class="ri-download-line"></i>
+                    </div>
+                    <span class="text-gray-300">5.2K</span>
+                  </div>
+                </div>
+                <a
+                  href="#"
+                  class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors duration-300 whitespace-nowrap"
+                  >Oyna</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Game 2 -->
+          <div
+            class="card rounded-lg overflow-hidden shadow-lg bg-gray-800"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="relative h-56">
+              <img
+                src="https://readdy.ai/api/search-image?query=veterinary%20clinic%20simulation%20game%20interface%2C%20cartoon%20style%2C%20medical%20equipment%2C%20animal%20patients%2C%20fun%20game%20UI%2C%20high%20quality%2C%20ultra%20detailed%2C%208k%20resolution%2C%20realistic&width=600&height=400&seq=game2&orientation=landscape"
+                alt="Vet Clinic Simulator"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2 text-white">
+                Vet Clinic Simulator
+              </h3>
+              <p class="text-gray-300 mb-4">
+                Kendi veteriner kliniğini yönet, hastaları tedavi et, ekipman
+                satın al ve kliniğini büyüt!
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                  <div class="flex items-center mr-4">
+                    <div
+                      class="w-5 h-5 flex items-center justify-center text-yellow-400 mr-1"
+                    >
+                      <i class="ri-star-fill"></i>
+                    </div>
+                    <span class="text-gray-300">4.6</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div
+                      class="w-5 h-5 flex items-center justify-center text-gray-400 mr-1"
+                    >
+                      <i class="ri-download-line"></i>
+                    </div>
+                    <span class="text-gray-300">3.8K</span>
+                  </div>
+                </div>
+                <a
+                  href="#"
+                  class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors duration-300 whitespace-nowrap"
+                  >Oyna</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Game 3 -->
+          <div
+            class="card rounded-lg overflow-hidden shadow-lg bg-gray-800"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="relative h-56">
+              <img
+                src="https://readdy.ai/api/search-image?query=animal%20puzzle%20game%20interface%2C%20colorful%20cartoon%20style%2C%20educational%20game%20with%20animal%20anatomy%2C%20fun%20game%20UI%2C%20high%20quality%2C%20ultra%20detailed%2C%208k%20resolution%2C%20realistic&width=600&height=400&seq=game3&orientation=landscape"
+                alt="Animal Puzzle Challenge"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2 text-white">
+                Animal Puzzle Challenge
+              </h3>
+              <p class="text-gray-300 mb-4">
+                Hayvan anatomisini öğreten eğitici bir bulmaca oyunu. Bilgini
+                test et ve puanını artır!
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                  <div class="flex items-center mr-4">
+                    <div
+                      class="w-5 h-5 flex items-center justify-center text-yellow-400 mr-1"
+                    >
+                      <i class="ri-star-fill"></i>
+                    </div>
+                    <span class="text-gray-300">4.9</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div
+                      class="w-5 h-5 flex items-center justify-center text-gray-400 mr-1"
+                    >
+                      <i class="ri-download-line"></i>
+                    </div>
+                    <span class="text-gray-300">7.1K</span>
+                  </div>
+                </div>
+                <a
+                  href="#"
+                  class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors duration-300 whitespace-nowrap"
+                  >Oyna</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Game 4 -->
+          <div
+            class="card rounded-lg overflow-hidden shadow-lg bg-gray-800"
+            data-aos="fade-up"
+          >
+            <div class="relative h-56">
+              <img
+                src="https://readdy.ai/api/search-image?query=animal%20rescue%20adventure%20game%20interface%2C%20colorful%20cartoon%20style%2C%20wildlife%20rescue%20mission%2C%20fun%20game%20UI%2C%20high%20quality%2C%20ultra%20detailed%2C%208k%20resolution%2C%20realistic&width=600&height=400&seq=game4&orientation=landscape"
+                alt="Wildlife Rescue"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2 text-white">
+                Wildlife Rescue
+              </h3>
+              <p class="text-gray-300 mb-4">
+                Vahşi doğada yaralı hayvanları kurtar, tedavi et ve doğal yaşam
+                alanlarına geri döndür!
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                  <div class="flex items-center mr-4">
+                    <div
+                      class="w-5 h-5 flex items-center justify-center text-yellow-400 mr-1"
+                    >
+                      <i class="ri-star-fill"></i>
+                    </div>
+                    <span class="text-gray-300">4.7</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div
+                      class="w-5 h-5 flex items-center justify-center text-gray-400 mr-1"
+                    >
+                      <i class="ri-download-line"></i>
+                    </div>
+                    <span class="text-gray-300">4.5K</span>
+                  </div>
+                </div>
+                <a
+                  href="#"
+                  class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors duration-300 whitespace-nowrap"
+                  >Oyna</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Game 5 -->
+          <div
+            class="card rounded-lg overflow-hidden shadow-lg bg-gray-800"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="relative h-56">
+              <img
+                src="https://readdy.ai/api/search-image?query=pet%20breeding%20simulation%20game%20interface%2C%20colorful%20cartoon%20style%2C%20genetics%20and%20breeding%20mechanics%2C%20fun%20game%20UI%2C%20high%20quality%2C%20ultra%20detailed%2C%208k%20resolution%2C%20realistic&width=600&height=400&seq=game5&orientation=landscape"
+                alt="Pet Genetics"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2 text-white">
+                Pet Genetics
+              </h3>
+              <p class="text-gray-300 mb-4">
+                Hayvan genetiği ve üretim simülasyonu. Farklı özelliklere sahip
+                hayvanlar yetiştir!
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                  <div class="flex items-center mr-4">
+                    <div
+                      class="w-5 h-5 flex items-center justify-center text-yellow-400 mr-1"
+                    >
+                      <i class="ri-star-fill"></i>
+                    </div>
+                    <span class="text-gray-300">4.5</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div
+                      class="w-5 h-5 flex items-center justify-center text-gray-400 mr-1"
+                    >
+                      <i class="ri-download-line"></i>
+                    </div>
+                    <span class="text-gray-300">3.2K</span>
+                  </div>
+                </div>
+                <a
+                  href="#"
+                  class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors duration-300 whitespace-nowrap"
+                  >Oyna</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Game 6 -->
+          <div
+            class="card rounded-lg overflow-hidden shadow-lg bg-gray-800"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="relative h-56">
+              <img
+                src="https://readdy.ai/api/search-image?query=animal%20quiz%20game%20interface%2C%20colorful%20cartoon%20style%2C%20educational%20trivia%20game%2C%20fun%20game%20UI%2C%20high%20quality%2C%20ultra%20detailed%2C%208k%20resolution%2C%20realistic&width=600&height=400&seq=game6&orientation=landscape"
+                alt="Animal Trivia Master"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2 text-white">
+                Animal Trivia Master
+              </h3>
+              <p class="text-gray-300 mb-4">
+                Hayvanlar hakkında bilgini test eden eğlenceli bir bilgi
+                yarışması. Arkadaşlarınla yarış!
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                  <div class="flex items-center mr-4">
+                    <div
+                      class="w-5 h-5 flex items-center justify-center text-yellow-400 mr-1"
+                    >
+                      <i class="ri-star-fill"></i>
+                    </div>
+                    <span class="text-gray-300">4.8</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div
+                      class="w-5 h-5 flex items-center justify-center text-gray-400 mr-1"
+                    >
+                      <i class="ri-download-line"></i>
+                    </div>
+                    <span class="text-gray-300">6.3K</span>
+                  </div>
+                </div>
+                <a
+                  href="#"
+                  class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors duration-300 whitespace-nowrap"
+                  >Oyna</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Stats Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="text-center" data-aos="fade-up">
+            <div
+              class="text-4xl font-bold text-primary mb-2"
+              id="projectsCount"
+            >
+              15+
+            </div>
+            <div class="text-gray-300">Tamamlanan Proje</div>
+          </div>
+          <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+            <div class="text-4xl font-bold text-primary mb-2" id="gamesCount">
+              10+
+            </div>
+            <div class="text-gray-300">Geliştirilen Oyun</div>
+          </div>
+          <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+            <div
+              class="text-4xl font-bold text-primary mb-2"
+              id="downloadsCount"
+            >
+              25K+
+            </div>
+            <div class="text-gray-300">İndirme</div>
+          </div>
+          <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+            <div
+              class="text-4xl font-bold text-primary mb-2"
+              id="experienceCount"
+            >
+              8+
+            </div>
+            <div class="text-gray-300">Yıl Deneyim</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section -->
+
+    <!-- Footer -->
+    <footer class="py-10 bg-gray-900">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-6 md:mb-0">
+            <a href="/" class="font-['Pacifico'] text-2xl text-white"
+              >Hakan SEÇGİN</a
+            >
+            <p class="text-gray-400 mt-2">
+              Veteriner Hekim & Yazılım Geliştirici
+            </p>
+          </div>
+          <div class="flex flex-wrap justify-center gap-6 mb-6 md:mb-0">
+            <a
+              href="#home"
+              class="text-gray-300 hover:text-primary transition-colors duration-300"
+              >Ana Sayfa</a
+            >
+            <a
+              href="#about"
+              class="text-gray-300 hover:text-primary transition-colors duration-300"
+              >Hakkımda</a
+            >
+            <a
+              href="#projects"
+              class="text-gray-300 hover:text-primary transition-colors duration-300"
+              >Projeler</a
+            >
+            <a
+              href="#games"
+              class="text-gray-300 hover:text-primary transition-colors duration-300"
+              >Oyunlar</a
+            >
+          </div>
+          <div class="flex space-x-4">
+            <a
+              href="#"
+              class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full social-icon"
+            >
+              <i class="ri-github-fill"></i>
+            </a>
+            <a
+              href="#"
+              class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full social-icon"
+            >
+              <i class="ri-linkedin-fill"></i>
+            </a>
+            <a
+              href="#"
+              class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full social-icon"
+            >
+              <i class="ri-twitter-x-fill"></i>
+            </a>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-400 text-sm mb-4 md:mb-0">
+            © 2025 Hakan SEÇGİN. Tüm hakları saklıdır.
+          </p>
+          <div class="flex space-x-6">
+            <a
+              href="#"
+              class="text-gray-400 text-sm hover:text-primary transition-colors duration-300"
+              >Gizlilik Politikası</a
+            >
+            <a
+              href="#"
+              class="text-gray-400 text-sm hover:text-primary transition-colors duration-300"
+              >Kullanım Şartları</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Header scroll effect
+        const header = document.getElementById("header");
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 50) {
+            header.classList.add("bg-gray-900", "shadow-lg");
+            header.classList.remove("bg-transparent");
+          } else {
+            header.classList.remove("bg-gray-900", "shadow-lg");
+            header.classList.add("bg-transparent");
+          }
+        });
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        mobileMenuBtn.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+          if (mobileMenu.classList.contains("hidden")) {
+            mobileMenuBtn.innerHTML = '<i class="ri-menu-line text-white ri-2x"></i>';
+          } else {
+            mobileMenuBtn.innerHTML =
+              '<i class="ri-close-line text-white ri-2x"></i>';
+          }
+        });
+        // Theme switch
+        const themeSwitch = document.getElementById("themeSwitch");
+        const themeSwitchMobile = document.getElementById("themeSwitchMobile");
+        themeSwitch.addEventListener("click", function () {
+          themeSwitch.classList.toggle("dark");
+          themeSwitchMobile.classList.toggle("dark");
+          // Here you would add logic to actually switch the theme
+        });
+        themeSwitchMobile.addEventListener("click", function () {
+          themeSwitch.classList.toggle("dark");
+          themeSwitchMobile.classList.toggle("dark");
+          // Here you would add logic to actually switch the theme
+        });
+        // Project filtering
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const projectCards = document.querySelectorAll(".project-card");
+        filterBtns.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            // Remove active class from all buttons
+            filterBtns.forEach((b) => b.classList.remove("active"));
+            // Add active class to clicked button
+            this.classList.add("active");
+            const filter = this.getAttribute("data-filter");
+            projectCards.forEach((card) => {
+              const categories = card.getAttribute("data-category").split(" ");
+              if (filter === "all" || categories.includes(filter)) {
+                card.style.display = "block";
+              } else {
+                card.style.display = "none";
+              }
+            });
+          });
+        });
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+              // Close mobile menu if open
+              if (!mobileMenu.classList.contains("hidden")) {
+                mobileMenu.classList.add("hidden");
+                mobileMenuBtn.innerHTML =
+                  '<i class="ri-menu-line text-white ri-2x"></i>';
+              }
+            }
+          });
+        });
+
+        // Animate skill bars on scroll
+        const skillBars = document.querySelectorAll(".skill-progress");
+        const animateSkillBars = () => {
+          skillBars.forEach((bar) => {
+            const barPosition = bar.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+            if (barPosition < screenPosition) {
+              bar.style.width =
+                bar.parentElement.previousElementSibling.lastElementChild.textContent;
+            }
+          });
+        };
+        window.addEventListener("scroll", animateSkillBars);
+        animateSkillBars(); // Initial check
+      });
+    </script>
+  </body>
+</html>
